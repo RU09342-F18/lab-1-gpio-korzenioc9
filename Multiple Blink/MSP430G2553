@@ -2,13 +2,13 @@
 
 int main() {
 
-    WDTCTL = WDTPW + WDTHOLD;
+    WDTCTL = WDTPW + WDTHOLD; //STOP WATCHDOG TIMER
 
-    P1SEL &= ~BIT0;
+    P1SEL &= ~BIT0; //CONFIGURES PIN 1.0 AS AN I/O PORT
     P1SEL2 &= ~BIT0;
     P1DIR |= BIT0;
 
-    P1SEL &= ~BIT6;
+    P1SEL &= ~BIT6; //CONFIGURES PIN 1.6 AS AN I/O PORT
     P1SEL2 &= ~BIT6;
     P1DIR |= BIT6;
 
