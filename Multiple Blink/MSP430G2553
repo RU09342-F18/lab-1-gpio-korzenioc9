@@ -1,3 +1,8 @@
+/*
+created by Cameron Korzeniowski
+created 9/11/2018
+*/
+
 #include <msp430.h>
 
 int main() {
