@@ -1,22 +1,9 @@
 # Multiple Blink
-Now that we have blinked at least 1 LED, what about blinking multiple LEDS at the same time? The minimum that you need to develop is blinking at least two LEDs at two different rates. Although I am not going to give you a speed, you should probably pick a rate which is visible to a standard human. I really hope that you take this further and perform some of the extra work for this part of the lab exercise.
+The same types of registers that were used for simple blink were used for multiple blink. However, in this case registers had to be altered for two seperate LEDs.
 
+# MSP430G2553
+The pins correleating to the LEDs on this board are pins 1.0 and 1.6. In order to enable these pins to be used for I/O, P1SEL and P1SEL2 have to be set to 0s for P1.0 and 1.6. Then P1DIR had to be set to 0 for both of these bits to make them outputs. Finally, the values of the P1OUTs for both bits had to be initialized to ensure the LEDs blink at the desired rates.
+The while loop for blinking multiple LEDs is a bit more complex than that of simple blink. Two variables were created, assigned values, and incremented using the -- function. The starting value assigned to each variable determines the blink rate of each LED, with a higher number meaning a faster blink rate. In two if statements in the while loop, there are XOR statements with the respective bit, 1 or 6, to toggle the state of the LED once they reach different, separated values. Finally, the variables are reset to their initial values within the if statement.
 
-# YOU NEED TO CREATE THE FOLLOWING FOLDERS
-* MSP430G2553
-* MSP(FILL IN WITH WHAT YOU ARE USING)
-
-## README
-Remember to replace this README with your README once you are ready to submit. I would recommend either making a copy of this file or taking a screen shot. There might be a copy of all of these README's in a folder on the top level depending on the exercise.
-
-## Extra Work
-When you take a look at the development boards, you are limited to what is built into the platform.
-
-### Even More LEDs
-Since up to this point you should have hopefully noticed that you are simply just controlling each pin on your processor. So... what is keeping you from putting an LED on each pin? Can you actually control the speed of each of these LEDs?
-
-### Patterned Lights
-If you can control a ton of LEDs, what is keeping you from having a little fun? Why not try and make something like a moving face or other moving object in lights. *CAUTION* I would only do this if you have finished the rest of the lab.
-
-### UART Pattern Control
-If you have been using UART, could you set which LEDs are on or off based off some UART command? Would you want to send an Array over UART such as [1 0 1 0] or would you want to send a byte that corresponds to the status? Can you not only say which LEDs are on, but also tell them to blink at a particular rate if they were on (so LED1 Blink every 100ms)?
+# MSP430F5529
+There are two primary differences when it comes to multiple blink between the F5529 and G2553. Once again, just as in simple blink, there are not two select registers that need to be set to 0 in order for the respective pins to be enabled to interface with I/O, but only one. Also, the second LED is linked to pin 4.7 instead of pin 1.6, while the first LED is P1.0 on both boards.
