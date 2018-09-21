@@ -17,26 +17,26 @@ int main(void) {
     P4OUT &= ~BIT7; //initializes the state of the LED
     P4DIR |= BIT7; //sets the I/O direction as output
 
-    volatile unsigned int n, i;
+    volatile unsigned int n, i; //CREATES VARIABLE TO BE INCREMENTED
 
-    i = 10000; //The 
-    n = 50000;
+    i = 10000; //SETS THE VALUES OF THE VARIABLES
+    n = 50000; //THESE VALUES CONTROL THE BLINK RATES OF THE TWO LEDS, HIGHER NUMBER = SLOWER BLINK
 
     for (;;)
     {
 
-    n--;
+    n--; //VARIABLES ARE CONTINUOUSLY DECRIMENTED
     i--;
 
-    if (n==0)
+    if (n==0) //ACTIVATES IF STATEMENT WHEN N REACHES 0
     {
-        P1OUT ^= BIT0;
-        n = 50000;
+        P1OUT ^= BIT0; //TOGGLES THE OUTPUT STATE TO BLINK THE LED
+        n = 50000; //RESETS THE VALUE OF N SO THE CYCLE CAN CONTINUE
     }
-    if (i==0)
+    if (i==0) //ACTIVATES IF STATEMENT WHEN I REACHES 0
     {
-    P4OUT ^= BIT7;
-    i = 10000;
+    P4OUT ^= BIT7; //TOGGLES THE OUTPUT STATE TO BLINK THE LED
+    i = 10000; //RESETS THE VALUE OF I SO THE CYCLE CAN CONTINUE
     }
     }
 
