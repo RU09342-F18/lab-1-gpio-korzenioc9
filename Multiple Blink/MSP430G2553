@@ -6,32 +6,32 @@ int main() {
 
     P1SEL &= ~BIT0; //CONFIGURES PIN 1.0 AS AN I/O PORT
     P1SEL2 &= ~BIT0;
-    P1DIR |= BIT0;
+    P1DIR |= BIT0; //SETS PIN 1.0 TO BE AN OUTPUT
 
     P1SEL &= ~BIT6; //CONFIGURES PIN 1.6 AS AN I/O PORT
     P1SEL2 &= ~BIT6;
-    P1DIR |= BIT6;
+    P1DIR |= BIT6;  //SETS PIN 1.6 TO BE AN OUTPUT
 
-    volatile unsigned int n, i;
+    volatile unsigned int n, i; //CREATES VARIABLE TO BE INCREMENTED
 
-    i = 10000;
-    n = 50000;
+    i = 10000; //SETS THE VALUES OF THE VARIABLES
+    n = 50000; //THESE VALUES CONTROL THE BLINK RATES OF THE TWO LEDS, HIGHER NUMBER = SLOWER BLINK
 
     for (;;)
     {
 
-    n--;
+    n--; //VARIABLES ARE CONTINUOUSLY DECRIMENTED
     i--;
 
-    if (n==0)
+    if (n==0) //ACTIVATES IF STATEMENT WHEN N REACHES 0
     {
-        P1OUT ^= BIT0;
-        n = 50000;
+        P1OUT ^= BIT0; //TOGGLES THE OUTPUT STATE TO BLINK THE LED
+        n = 50000; //RESETS THE VALUE OF N SO THE CYCLE CAN CONTINUE
     }
-    if (i==0)
+    if (i==0) //ACTIVATES IF STATEMENT WHEN I REACHES 0
     {
-    P1OUT ^= BIT6;
-    i = 10000;
+    P1OUT ^= BIT6; //TOGGLES THE OUTPUT STATE TO BLINK THE LED
+    i = 10000; //RESETS THE VALUE OF I SO THE CYCLE CAN CONTINUE
     }
     }
 
