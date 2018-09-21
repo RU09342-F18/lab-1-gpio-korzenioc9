@@ -1,16 +1,21 @@
+/*
+created by Cameron Korzeniowski
+created 9/11/2018
+*/
+
 #include <msp430.h>
 
 int main(void) {
 
-    WDTCTL = WDTPW + WDTHOLD;
+    WDTCTL = WDTPW + WDTHOLD; //stop watchdog timer
 
-    P1SEL &= ~BIT0;
-    P1OUT &= ~BIT0;
-    P1DIR |= BIT0;
+    P1SEL &= ~BIT0; //sets pin 1.0 as an I/O
+    P1OUT &= ~BIT0; //initializes the state of the LED
+    P1DIR |= BIT0; //sets the I/O direction as output
 
-    P4SEL &= ~BIT7;
-    P4OUT &= ~BIT7;
-    P4DIR |= BIT7;
+    P4SEL &= ~BIT7; //sets pin 4.7 as an I/O
+    P4OUT &= ~BIT7; //initializes the state of the LED
+    P4DIR |= BIT7; //sets the I/O direction as output
 
     volatile unsigned int n, i;
 
